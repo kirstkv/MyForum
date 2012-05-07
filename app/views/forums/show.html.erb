@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @forum.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @forum.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @forum.content %>
+</p>
+
+<h2>Threads</h2>
+<% @forum.topics.each do |topic| %>
+<p>
+  <b>User:</b>
+  <%= topic.user %>
+  </p>
+
+<p>
+  <b>Topic:</b>
+  <%= topic.title %>
+  </p>
+<% end %>
+
+<h2>Add a Thread:</h2>
+<%= form_for([@forum, @forum.topic.build]) do |f| %>
+<div class="field">
+  <%= f.label :name %><br />
+  <%= f.text_field :name %>
+  </div>
+<div class="field">
+  <%= f.label :title %><br />
+  <%= f.text_area :title %>
+  </div>
+<div class="actions">
+  <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_forum_path(@forum) %> |
+<%= link_to 'Back', forums_path %>
