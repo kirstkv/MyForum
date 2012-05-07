@@ -26,6 +26,11 @@
   <b>Topic:</b>
   <%= topic.title %>
   </p>
+
+
+<p>
+  <%= link_to 'Destroy Topic', [topic.forum, topic], :confirm => 'Are you sure?', :method => :delete %>
+</p> 
 <% end %>
 
 <h2>Add a Thread:</h2>
