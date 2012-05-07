@@ -30,7 +30,24 @@
 
 <p>
   <%= link_to 'Destroy Topic', [topic.forum, topic], :confirm => 'Are you sure?', :method => :delete %>
-</p> 
+</p>
+
+<%= form_for ([topic, topic.posts.build])  do |f| %>
+  <%= f.hidden_field :topic_id %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_field :body %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div> 
+<% end %>
+
+
 <% end %>
 
 <h2>Add a Thread:</h2>
