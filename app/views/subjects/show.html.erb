@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+<h1> Subjects </h1>
+<p>
+  <b>Title:</b>
+  <%= @subject.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @subject.description %>
+</p>
+
+<h2>Threads</h2>
+
+<% @subject.forums.each do |forum| %>
+<p>
+  <b>Thread:</b>
+  <%= link_to forum.title, forum_path(forum) %>
+  </p>
+
+<p>
+  <b>User:</b>
+  <%= forum.name %>
+</p>
+
+<p>
+  <%= link_to 'Destroy Thread', [forum.subject, forum], :confirm => 'Are you sure?', :method => :delete %>
+</p> 
+<% end %>
+
+<h2>Add a new Thread: </h2>
+
+<%= form_for ([@subject, @subject.forums.build])  do |f| %>
+  <%= f.hidden_field :subject_id %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div> 
+<% end %>
+
+<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<%= link_to 'Back', subjects_path %>

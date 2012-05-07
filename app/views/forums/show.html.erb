@@ -11,11 +11,12 @@
 </p>
 
 <p>
-  <b>Content:</b>
-  <%= @forum.content %>
+  <!--<b>Content:</b>-->
+  <%= #@forum.content
+  %>
 </p>
 
-<h2>Threads</h2>
+<h2>Posts</h2>
 <% @forum.topics.each do |topic| %>
 <p>
   <b>User:</b>
@@ -33,7 +34,7 @@
 </p> 
 <% end %>
 
-<h2>Add a Thread:</h2>
+<h2>Add a Post: </h2>
 
 <%= form_for ([@forum, @forum.topics.build])  do |f| %>
   <%= f.hidden_field :forum_id %>
@@ -44,7 +45,7 @@
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
-  </div>
+  </div>  
   <div>
     <%= f.submit %>
   </div> 
@@ -52,4 +53,4 @@
 
 
 <%= link_to 'Edit', edit_forum_path(@forum) %> |
-<%= link_to 'Back', forums_path %>
+<%= link_to 'Back', subject_path(@forum.subject) %>

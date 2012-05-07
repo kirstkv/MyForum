@@ -43,12 +43,12 @@ class ForumsController < ApplicationController
   # POST /forums
   # POST /forums.json
   def create
-    @forum = Forum.new(params[:forum])
+      @subject = Subject.find(params[:subject_id])
+      @forum = @subject.forums.create(params[:forum])
 
     respond_to do |format|
       if @forum.save
-        format.html { redirect_to @forum, notice: 'Forum was successfully created.' }
-        format.json { render json: @forum, status: :created, location: @forum }
+        format.html { redirect_to subject_path(@subject), notice: 'Forum was successfully created.' }
       else
         format.html { render action: "new" }
         format.json { render json: @forum.errors, status: :unprocessable_entity }
@@ -76,12 +76,9 @@ class ForumsController < ApplicationController
   # DELETE /forums/1
   # DELETE /forums/1.json
   def destroy
-    @forum = Forum.find(params[:id])
-    @forum.destroy
-
-    respond_to do |format|
-      format.html { redirect_to forums_url }
-      format.json { head :no_content }
+      @subject = Subject.find(params[:subject_id])
+      @forum = @subject.forums.find(params[:id])
+      @forum.destroy
+      redirect_to subject_path(@subject)
     end
-  end
 end

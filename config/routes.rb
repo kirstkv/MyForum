@@ -1,4 +1,10 @@
 Forumapp::Application.routes.draw do
+  
+  resources :subjects do
+    resources :forums
+    resources :topics
+  end
+
   resources :forums do
     resources :topics
   end
