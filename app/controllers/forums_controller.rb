@@ -14,6 +14,7 @@ class ForumsController < ApplicationController
   # GET /forums/1.json
   def show
     @forum = Forum.find(params[:id])
+    @topics = Topic.find(:all)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +26,7 @@ class ForumsController < ApplicationController
   # GET /forums/new.json
   def new
     @forum = Forum.new
+    @topics = Topic.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,7 @@ class ForumsController < ApplicationController
   # GET /forums/1/edit
   def edit
     @forum = Forum.find(params[:id])
+    @topics = Topic.all
   end
 
   # POST /forums
@@ -56,6 +59,7 @@ class ForumsController < ApplicationController
   # PUT /forums/1
   # PUT /forums/1.json
   def update
+
     @forum = Forum.find(params[:id])
 
     respond_to do |format|
