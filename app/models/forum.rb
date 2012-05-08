@@ -3,4 +3,5 @@ class Forum < ActiveRecord::Base
     validates :title, :presence => true, :length => { :minimum => 4 }
     has_many :topics, :dependent => :destroy
     belongs_to :subject
+    accepts_nested_attributes_for :topics
 end

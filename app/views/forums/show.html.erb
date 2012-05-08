@@ -11,9 +11,8 @@
 </p>
 
 <p>
-  <!--<b>Content:</b>-->
-  <%= #@forum.content
-  %>
+  <b>Content:</b>
+  <%= @forum.content %>
 </p>
 
 <h2>Posts</h2>
@@ -24,7 +23,7 @@
   </p>
 
 <p>
-  <b>Topic:</b>
+  <b>Reply:</b>
   <%= topic.title %>
   </p>
 
@@ -44,7 +43,7 @@
   </div>
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_area :title %>
   </div>  
   <div>
     <%= f.submit %>

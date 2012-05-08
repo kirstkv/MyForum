@@ -27,6 +27,7 @@ class ForumsController < ApplicationController
   def new
     @forum = Forum.new
     @topics = Topic.all
+    @forum.topic.build
 
     respond_to do |format|
       format.html # new.html.erb
