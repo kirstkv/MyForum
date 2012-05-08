@@ -20,21 +20,23 @@
     <td><strong>by <%= topic.name %> at <%= topic.created_at.localtime.strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
     <%= topic.title %><br />
     <%= topic.created_at.localtime.strftime("Edited at %H:%M on %d/%m/%Y") if topic.created_at !=topic.updated_at%><br />
-    <%= link_to 'Destroy Topic', [topic.forum, topic], :confirm => 'Are you sure?', :method => :delete %>
+    <% if current_user.username==topic.name or current_user.admin? %>
+    <%=link_to 'Destroy Topic', [topic.forum, topic], :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>
     </td>
   </tr>
   
 <% end %>
 </table>
 <% if current_user!=nil %>
-<h2>Add a Post: </h2>
+  
+<h3><a href="#" onclick="return false" class="displayform"> Add a new Post</a></h3>
+
+<div class="jsappear">
 
 <%= form_for ([@forum, @forum.topics.build])  do |f| %>
   <%= f.hidden_field :forum_id %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+  <%= f.hidden_field :name, :value=> current_user.username %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_area :title %>
@@ -43,6 +45,9 @@
     <%= f.submit %>
   </div> 
 <% end %>
+
+</div>
+
 <% end %>
 
 <%= link_to 'Edit', edit_forum_path(@forum) %> |

@@ -46,13 +46,14 @@
 </table>
 
 <% if current_user!=nil %>
-<h3>Add a new Thread: </h3>
 
+<h3><a href="#" onclick="return false" class="displayform"> Add a new Thread</a></h3>
+
+<div class="jsappear">
 <%= form_for ([@subject, @subject.forums.build])  do |f| %>
   <%= f.hidden_field :subject_id %>
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.hidden_field :name, :value=> current_user.username %>
   </div>
   <div class="field">
     <%= f.label :title %><br />
@@ -66,6 +67,9 @@
     <%= f.submit %>
   </div> 
 <% end %>
+
+</div>
+
 <% end %>
 
 <%= link_to 'Edit', edit_subject_path(@subject) %>

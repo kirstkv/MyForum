@@ -4,13 +4,16 @@
   <title>Forumapp</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body style="background: #EEEEEE;">
   <div id="user_nav">
+
   <% if user_signed_in? %>
     Signed in as <%= current_user.username %>. Not you?
     <%= link_to "Sign out", destroy_user_session_path %>
+    <%= link_to "My Account", edit_user_registration_path %>
   <% else %>
     <%= link_to "Sign up", new_user_registration_path %> or
     <%= link_to "Sign in", new_user_session_path %>
@@ -24,6 +27,13 @@
 
 
   <%= yield %>
+  
+  
+<script>
+  $(".displayform").click(function () {
+    $(".jsappear").slideToggle("slow");
+  });
+</script>
 
 </body>
 </html>
