@@ -11,7 +11,7 @@
   <th></th>
   </tr>
   <tr>
-  <% (@subject.forums.sort_by(&:updated_at)).each do |forum| %>
+  <% (@subject.forums.sort_by(&:updated_at).reverse).each do |forum| %>
     <% x=0 %>      
     <% x=x+forum.topics.count %>
     <% name = "" %>
@@ -19,7 +19,7 @@
     
     
       <td><%= link_to forum.title, forum_path(forum) %><br />
-      By <%= forum.name %> at <%= forum.created_at.strftime(" at %H:%M on %d/%m/%Y")  %><br /></td>
+      By <%= forum.name %> at <%= forum.created_at.localtime .strftime(" at %H:%M on %d/%m/%Y")  %><br /></td>
       
       <td><em><%=x %> post<%="s" if x!=1 %></em></td>
       
@@ -65,5 +65,5 @@
   </div> 
 <% end %>
 
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<%= link_to 'Edit', edit_subject_path(@subject) %>
 <%= link_to 'Back', subjects_path %>

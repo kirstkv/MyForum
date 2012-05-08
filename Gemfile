@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.1'
 gem 'railties', '3.2.1'
 gem 'ffi', '1.0.9'
-gem 'devise', '1.1.rc0'
+gem 'devise', '2.0.4'
+gem 'warden', '1.1.1'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'json', '1.4.6'
 
@@ -26,12 +27,10 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'email_spec'
+  gem "mocha"
   gem 'capybara', '1.1.2'
 end
 
 group :production do
   gem 'pg', '0.12.2'
 end
-
-
-gem "mocha", :group => :test
