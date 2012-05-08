@@ -166,7 +166,7 @@ DEPENDENCIES
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)
   database_cleaner
-  devise
+  devise (= 2.0.4)
   email_spec
   factory_girl_rails
   ffi (= 1.0.9)
@@ -180,3 +180,4 @@ DEPENDENCIES
   sass-rails (= 3.2.4)
   sqlite3 (= 1.3.5)
   uglifier (= 1.2.3)
+  warden (= 1.1.1)
