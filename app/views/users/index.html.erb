@@ -1,0 +1,30 @@
+<h1>Listing users</h1>
+  <table>
+    <tr>
+      <th>Image</th>        
+      <th>Username</th>
+      <th>Number of Posts</th>
+      <% if current_user.admin? %>
+        <th>Email</th>
+        <th>Admin</th>
+        <th></th>
+      <% end %>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+      <td></td>
+      <td><strong><%= user.username %></strong></td>
+      <td>A number of posts</td>
+      <% if current_user.admin? %>
+        <td><%=user.email%></td>
+        <td><%="Yes" if user.admin? %></td>  
+
+        <td>
+          <%unless user==current_user %>
+            <%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+    <% end %>
+</table>

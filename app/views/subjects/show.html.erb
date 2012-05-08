@@ -15,7 +15,7 @@
   <% end %>
   </tr>
   <tr>
-  <% (@subject.forums.sort_by(&:updated_at).reverse).each do |forum| %>
+  <% (@forums.sort_by(&:updated_at).reverse).each do |forum| %>
     <% x=0 %>      
     <% x=x+forum.topics.count %>
     <% name = "" %>
@@ -52,6 +52,8 @@
     </tr>
   <% end %>
 </table>
+
+<%= will_paginate @forums %>
 
 <% if current_user!=nil %>
 

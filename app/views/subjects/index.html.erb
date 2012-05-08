@@ -49,6 +49,8 @@
 <% end %>
 </table>
 
+<%= will_paginate @subjects%>
+
 <br />
 <% if current_user!=nil %>
 <% if current_user.admin? %>

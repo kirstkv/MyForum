@@ -9,24 +9,27 @@
   <div><%= f.label :username %><br />
   <%= f.text_field :username %></div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <div><%= f.label :password %> <em>(leave blank if you don't want to change it)</em><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
 
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <div><%= f.label :time_zone %><br />
+  <%= f.time_zone_select(:time_zone, ActiveSupport::TimeZone.us_zones) %></div>
+  <h4>Enter your current password to confirm changes </h4>
+  <div><%= f.label :current_password %><br />
   <%= f.password_field :current_password %></div>
-
+  <br />
   <div><%= f.submit "Update" %></div>
 
-
-  <div><%= f.time_zone_select(:time_zone, ActiveSupport::TimeZone.us_zones) %>
 <% end %>
-</div> 
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
+</div>
+<br />
+<h3>Cancel my account</h3> 
+<% if @current_user.admin==true %>
+  <p><em>As an admin user, you cannot cancel your own account </em></p>
+<% else %>
+  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+<% end %>
 <%= link_to "Back", :back %>

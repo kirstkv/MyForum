@@ -12,7 +12,7 @@
     </td>   
   </tr>
   
-  <% (@forum.topics.sort_by(&:created_at)).each do |topic| %>
+  <% (@topics.sort_by(&:created_at)).each do |topic| %>
   <% x=x+1 %>
   <tr>
     <td><%= topic.name %> profile</td>
@@ -29,6 +29,9 @@
   
 <% end %>
 </table>
+
+<%= will_paginate @topics %>
+
 <% if current_user!=nil %>
   
 <h3><a href="#" onclick="return false" class="displayform"> Add a new Post</a></h3>
