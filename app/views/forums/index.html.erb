@@ -23,5 +23,6 @@
 </table>
 
 <br />
-
+<% if current_user!=nil %>
 <%= link_to 'New Forum', new_forum_path %>
+<% end %>

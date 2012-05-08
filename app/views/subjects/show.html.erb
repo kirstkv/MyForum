@@ -44,6 +44,8 @@
     </tr>
   <% end %>
 </table>
+
+<% if current_user!=nil %>
 <h3>Add a new Thread: </h3>
 
 <%= form_for ([@subject, @subject.forums.build])  do |f| %>
@@ -63,6 +65,7 @@
   <div>
     <%= f.submit %>
   </div> 
+<% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_subject_path(@subject) %>

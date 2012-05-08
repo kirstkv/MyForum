@@ -26,7 +26,7 @@
   
 <% end %>
 </table>
-
+<% if current_user!=nil %>
 <h2>Add a Post: </h2>
 
 <%= form_for ([@forum, @forum.topics.build])  do |f| %>
@@ -43,7 +43,7 @@
     <%= f.submit %>
   </div> 
 <% end %>
-
+<% end %>
 
 <%= link_to 'Edit', edit_forum_path(@forum) %> |
 <%= link_to 'Back', subject_path(@forum.subject) %>

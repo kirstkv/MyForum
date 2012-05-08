@@ -1,4 +1,5 @@
 class ForumsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show, :index]
   # GET /forums
   # GET /forums.json
   def index
