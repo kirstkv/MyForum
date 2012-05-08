@@ -1,9 +1,10 @@
-<h1>Listing subjects</h1>
+<h1>Topics</h1>
 
-<table>
+<table cellpadding="10px" border="1" width="100%">
   <tr>
-    <th>Title</th>
-    <th>Description</th>
+    <th width="20%">Title</th>
+    <th width="40%">Description</th>
+    <th width="20%">Last Post</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,8 +12,30 @@
 
 <% @subjects.each do |subject| %>
   <tr>
-    <td><%= link_to subject.title, subject %></td>
+    <td><%= link_to subject.title, subject %><br /><%= subject.forums.count %> threads<br />
+    <% x=0 %>
+    <% name = "" %>
+    <% y=Time.at(0) %>
+    <% subject.forums.each do |f|%>
+      <% x=x+f.topics.count %>
+      <% f.topics.each do |tim| %>
+        <% if tim.updated_at>y %>
+          <% y=(tim.updated_at).localtime %>
+          <% name=tim.name %>
+        <% end %>  
+      <% end %>
+    <% end %>
+    <em><%=x %> post<%="s" if x!=1 %></em>    
+    </td>
     <td><%= subject.description %></td>
+    <td>
+    <% if x!=0 %>
+      by <%=name %>
+      <%=y.strftime(" at %H:%M on %d/%m/%Y")  %>
+    <% else %>
+      <%="No posts here yet :-" %>&#040
+    <% end %>
+    </td>
     <td><%= link_to 'Show', subject %></td>
     <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
     <td><%= link_to 'Destroy', subject, confirm: 'Are you sure?', method: :delete %></td>
@@ -22,4 +45,4 @@
 
 <br />
 
-<%= link_to 'New Subject', new_subject_path %>
+<%= link_to 'Add Topic', new_subject_path %>

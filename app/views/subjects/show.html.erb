@@ -1,34 +1,50 @@
 <p id="notice"><%= notice %></p>
-<h1> Subjects </h1>
-<p>
-  <b>Title:</b>
-  <%= @subject.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @subject.description %>
-</p>
+<h1><%= @subject.title %></h1>
+<strong><%= @subject.description %></strong>
 
 <h2>Threads</h2>
+<table cellpadding="10px" border="1" width="100%">
+  <tr>
+  <th>Thread</th>
+  <th>Replies</th>
+  <th>Last Post</th>
+  <th></th>
+  </tr>
+  <tr>
+  <% (@subject.forums.sort_by(&:updated_at)).each do |forum| %>
+    <% x=0 %>      
+    <% x=x+forum.topics.count %>
+    <% name = "" %>
+    <% y=Time.at(0) %>
+    
+    
+      <td><%= link_to forum.title, forum_path(forum) %><br />
+      By <%= forum.name %> at <%= forum.created_at.strftime(" at %H:%M on %d/%m/%Y")  %><br /></td>
+      
+      <td><em><%=x %> post<%="s" if x!=1 %></em></td>
+      
+      <td>      
+      <% forum.topics.each do |tim| %>
+        <% if tim.updated_at>y %>
+          <% y=(tim.updated_at).localtime %>
+          <% name=tim.name %>
+        <% end %>
+      <% end %>
 
-<% @subject.forums.each do |forum| %>
-<p>
-  <b>Thread:</b>
-  <%= link_to forum.title, forum_path(forum) %>
-  </p>
-
-<p>
-  <b>User:</b>
-  <%= forum.name %>
-</p>
-
-<p>
-  <%= link_to 'Destroy Thread', [forum.subject, forum], :confirm => 'Are you sure?', :method => :delete %>
-</p> 
-<% end %>
-
-<h2>Add a new Thread: </h2>
+      <% if x!=0 %>
+        by <%=name %>
+        <%=y.strftime(" at %H:%M on %d/%m/%Y")  %>
+      <% else %>
+        <%="No posts here yet :-" %>&#040
+      <% end %>
+      </td>
+      
+      <td><%= link_to 'Destroy Thread', [forum.subject, forum], :confirm => 'Are you sure?', :method => :delete %></td>
+    
+    </tr>
+  <% end %>
+</table>
+<h3>Add a new Thread: </h3>
 
 <%= form_for ([@subject, @subject.forums.build])  do |f| %>
   <%= f.hidden_field :subject_id %>

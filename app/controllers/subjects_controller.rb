@@ -1,6 +1,12 @@
 class SubjectsController < ApplicationController
   # GET /subjects
   # GET /subjects.json
+  def most_recent_post  
+    newforum = Forum.find(:conditions => ['forum_id = ?', self.id])  
+    return newforum  
+  end  
+  
+  
   def index
     @subjects = Subject.all
 

@@ -1,37 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @forum.name %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @forum.title %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @forum.content %>
-</p>
-
-<h2>Posts</h2>
-<% @forum.topics.each do |topic| %>
-<p>
-  <b>User:</b>
-  <%= topic.name %>
-  </p>
-
-<p>
-  <b>Reply:</b>
-  <%= topic.title %>
-  </p>
+<h2><%= @forum.title %></h2>
 
 
-<p>
-  <%= link_to 'Destroy Topic', [topic.forum, topic], :confirm => 'Are you sure?', :method => :delete %>
-</p> 
+<table cellpadding="10px" border="1" width="100%">
+  <% x=1 %>
+  <tr>
+    <td width="10%"><%= @forum.name %> profile</td>
+    <td width= "90%"><strong>by <%= @forum.name %> at <%= @forum.created_at.localtime.strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
+    <%= @forum.content %><br />
+    <%= @forum.created_at.localtime.strftime("Edited at %H:%M on %d/%m/%Y") if @forum.created_at !=@forum.updated_at%><br />
+    </td>   
+  </tr>
+  
+  <% (@forum.topics.sort_by(&:created_at)).each do |topic| %>
+  <% x=x+1 %>
+  <tr>
+    <td><%= topic.name %> profile</td>
+    <td><strong>by <%= topic.name %> at <%= topic.created_at.localtime.strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
+    <%= topic.title %><br />
+    <%= topic.created_at.localtime.strftime("Edited at %H:%M on %d/%m/%Y") if topic.created_at !=topic.updated_at%><br />
+    <%= link_to 'Destroy Topic', [topic.forum, topic], :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+  </tr>
+  
 <% end %>
+</table>
 
 <h2>Add a Post: </h2>
 
