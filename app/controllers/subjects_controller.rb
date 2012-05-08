@@ -21,7 +21,16 @@ class SubjectsController < ApplicationController
   # GET /subjects/1.json
   def show
     @subject = Subject.find(params[:id])
-    @forums = Forum.find(:all)
+    @subject.forums.each do |f|
+      y=Time.at(0)
+      f.topics.each do |tim|
+        if tim.updated_at>y
+          y=(tim.updated_at)
+        end
+      end  
+      f.newpost=y
+      f.save  
+    end  
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @subject }

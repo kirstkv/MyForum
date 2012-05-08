@@ -20,8 +20,10 @@
     <td><strong>by <%= topic.name %> at <%= topic.created_at.localtime.strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
     <%= topic.title %><br />
     <%= topic.created_at.localtime.strftime("Edited at %H:%M on %d/%m/%Y") if topic.created_at !=topic.updated_at%><br />
-    <% if current_user.username==topic.name or current_user.admin? %>
-    <%=link_to 'Destroy Topic', [topic.forum, topic], :confirm => 'Are you sure?', :method => :delete %>
+    <% if current_user!=nil %>
+      <% if current_user.username==topic.name or current_user.admin? %>
+        <%=link_to 'Destroy Topic', [topic.forum, topic], :confirm => 'Are you sure?', :method => :delete %>
+      <% end %>
     <% end %>
     </td>
   </tr>
@@ -42,13 +44,16 @@
     <%= f.text_area :title %>
   </div>  
   <div>
-    <%= f.submit %>
+    <%= f.submit("Submit Post") %>
   </div> 
 <% end %>
 
 </div>
 
+<% else %>
+  <h3><%= link_to "Sign in", new_user_session_path %> to add a post</h3>
 <% end %>
 
-<%= link_to 'Edit', edit_forum_path(@forum) %> |
+<%= # link_to 'Edit', edit_forum_path(@forum)
+%>
 <%= link_to 'Back', subject_path(@forum.subject) %>

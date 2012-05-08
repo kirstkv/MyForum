@@ -5,10 +5,11 @@
     <th width="20%">Title</th>
     <th width="40%">Description</th>
     <th width="20%">Last Post</th>
-    <th></th>
+    <% if current_user!=nil %>
     <% if current_user.admin? %>
     <th></th>
     <th></th>
+  <% end %>
   <% end %>
   </tr>
 
@@ -38,16 +39,19 @@
       <%="No posts here yet :-" %>&#040
     <% end %>
     </td>
-    <td><%= link_to 'Show', subject %></td>
+    <% if current_user!=nil %>
     <% if current_user.admin? %>
     <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
     <td><%= link_to 'Destroy', subject, confirm: 'Are you sure?', method: :delete %></td>
+  <% end %>
   <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
+<% if current_user!=nil %>
 <% if current_user.admin? %>
   <%= link_to 'Add Topic', new_subject_path %>
+<% end %>
 <% end %>

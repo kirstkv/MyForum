@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <h1><%= @subject.title %></h1>
 <strong><%= @subject.description %></strong>
 
@@ -8,7 +8,11 @@
   <th>Thread</th>
   <th>Replies</th>
   <th>Last Post</th>
-  <th></th>
+  <% if current_user!=nil %>
+    <% if current_user.admin? %>
+      <th></th>
+    <% end %>
+  <% end %>
   </tr>
   <tr>
   <% (@subject.forums.sort_by(&:updated_at).reverse).each do |forum| %>
@@ -38,8 +42,12 @@
         <%="No posts here yet :-" %>&#040
       <% end %>
       </td>
+      <% if current_user!=nil %>
+        <% if current_user.admin? %>
+          <td><%= link_to 'Destroy Thread', [forum.subject, forum], :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+      <% end %>
       
-      <td><%= link_to 'Destroy Thread', [forum.subject, forum], :confirm => 'Are you sure?', :method => :delete %></td>
     
     </tr>
   <% end %>
@@ -47,30 +55,32 @@
 
 <% if current_user!=nil %>
 
-<h3><a href="#" onclick="return false" class="displayform"> Add a new Thread</a></h3>
+  <h3><a href="#" onclick="return false" class="displayform"> Add a new Thread</a></h3>
 
-<div class="jsappear">
-<%= form_for ([@subject, @subject.forums.build])  do |f| %>
-  <%= f.hidden_field :subject_id %>
-  <div class="field">
+  <div class="jsappear">
+  <%= form_for ([@subject, @subject.forums.build])  do |f| %>
+    <%= f.hidden_field :subject_id %>
     <%= f.hidden_field :name, :value=> current_user.username %>
+
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :content %><br />
+      <%= f.text_area :content %>
+    </div>  
+    <div>
+      <%= f.submit("Create Thread") %>
+    </div> 
+  <% end %>
+
   </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>  
-  <div>
-    <%= f.submit %>
-  </div> 
+
+<% else %>
+  <h3><%= link_to "Sign in", new_user_session_path %> to add a thread</h3>
 <% end %>
 
-</div>
-
-<% end %>
-
-<%= link_to 'Edit', edit_subject_path(@subject) %>
+<%= # link_to 'Edit', edit_subject_path(@subject)
+%>
 <%= link_to 'Back', subjects_path %>
