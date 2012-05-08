@@ -23,7 +23,7 @@
       <% x=x+f.topics.count %>
       <% f.topics.each do |tim| %>
         <% if tim.updated_at>y %>
-          <% y=(tim.updated_at).localtime %>
+          <% y=(tim.updated_at).in_time_zone(Time.zone) %>
           <% name=tim.name %>
         <% end %>  
       <% end %>
@@ -34,7 +34,7 @@
     <td>
     <% if x!=0 %>
       by <%=name %>
-      <%=y.strftime(" at %H:%M on %d/%m/%Y")  %>
+      <%=y.strftime(" at %H:%M on %d/%m/%Y") %>
     <% else %>
       <%="No posts here yet :-" %>&#040
     <% end %>

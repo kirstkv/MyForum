@@ -7,9 +7,8 @@
   <% x=1 %>
   <tr>
     <td width="10%"><%= @forum.name %> profile</td>
-    <td width= "90%"><strong>by <%= @forum.name %> at <%= @forum.created_at.localtime.strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
+    <td width= "90%"><strong>by <%= @forum.name %> at <%= @forum.created_at.in_time_zone(Time.zone).strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
     <%= @forum.content %><br />
-    <%= @forum.created_at.localtime.strftime("Edited at %H:%M on %d/%m/%Y") if @forum.created_at !=@forum.updated_at%><br />
     </td>   
   </tr>
   
@@ -17,9 +16,9 @@
   <% x=x+1 %>
   <tr>
     <td><%= topic.name %> profile</td>
-    <td><strong>by <%= topic.name %> at <%= topic.created_at.localtime.strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
+    <td><strong>by <%= topic.name %> at <%= topic.created_at.in_time_zone(Time.zone).strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
     <%= topic.title %><br />
-    <%= topic.created_at.localtime.strftime("Edited at %H:%M on %d/%m/%Y") if topic.created_at !=topic.updated_at%><br />
+    <%= topic.updated_at.in_time_zone(Time.zone).strftime("Edited at %H:%M on %d/%m/%Y") if topic.created_at !=topic.updated_at%><br />
     <% if current_user!=nil %>
       <% if current_user.username==topic.name or current_user.admin? %>
         <%=link_to 'Destroy Topic', [topic.forum, topic], :confirm => 'Are you sure?', :method => :delete %>

@@ -19,7 +19,11 @@
   <%= f.password_field :current_password %></div>
 
   <div><%= f.submit "Update" %></div>
+
+
+  <div><%= f.time_zone_select(:time_zone, ActiveSupport::TimeZone.us_zones) %>
 <% end %>
+</div> 
 
 <h3>Cancel my account</h3>
 

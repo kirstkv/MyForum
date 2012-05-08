@@ -23,14 +23,14 @@
     
     
       <td><%= link_to forum.title, forum_path(forum) %><br />
-      By <%= forum.name %> at <%= forum.created_at.localtime .strftime(" at %H:%M on %d/%m/%Y")  %><br /></td>
+      By <%= forum.name %> at <%= forum.created_at.in_time_zone(Time.zone).strftime(" at %H:%M on %d/%m/%Y")  %><br /></td>
       
       <td><em><%=x %> post<%="s" if x!=1 %></em></td>
       
       <td>      
       <% forum.topics.each do |tim| %>
         <% if tim.updated_at>y %>
-          <% y=(tim.updated_at).localtime %>
+          <% y=(tim.updated_at).in_time_zone(Time.zone) %>
           <% name=tim.name %>
         <% end %>
       <% end %>
