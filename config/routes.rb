@@ -14,7 +14,10 @@ Forumapp::Application.routes.draw do
     resources :topics
   end
   
-  resources :users
+  resources :users do
+    resources :topics
+    resources :forums
+  end
   match '/users/:id', :to => 'users#destroy', :as => :destroy_user, :via => :delete
 
 

@@ -1,7 +1,12 @@
 
 <h1><%= @subject.title %></h1>
 <strong><%= @subject.description %></strong>
-
+    <%= form_tag subject_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+    <% end %>
 <h2>Threads</h2>
 <table cellpadding="10px" border="1" width="100%">
   <tr>
@@ -63,7 +68,7 @@
   <%= form_for ([@subject, @subject.forums.build])  do |f| %>
     <%= f.hidden_field :subject_id %>
     <%= f.hidden_field :name, :value=> current_user.username %>
-
+    <%= f.hidden_field :user_id, :value=> current_user.id %>
     <div class="field">
       <%= f.label :title %><br />
       <%= f.text_field :title %>

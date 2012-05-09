@@ -11,6 +11,7 @@
     <%= @forum.content %><br />
     </td>   
   </tr>
+  <tr><td colspan=2><strong>Replies</strong></td></tr>
   
   <% (@topics.sort_by(&:created_at)).each do |topic| %>
   <% x=x+1 %>
@@ -21,7 +22,8 @@
     <%= topic.updated_at.in_time_zone(Time.zone).strftime("Edited at %H:%M on %d/%m/%Y") if topic.created_at !=topic.updated_at%><br />
     <% if current_user!=nil %>
       <% if current_user.username==topic.name or current_user.admin? %>
-        <%=link_to 'Destroy Topic', [topic.forum, topic], :confirm => 'Are you sure?', :method => :delete %>
+        <%=link_to 'Destroy Post', [topic.forum, topic], :confirm => 'Are you sure?', :method => :delete %>
+
       <% end %>
     <% end %>
     </td>
@@ -41,9 +43,10 @@
 <%= form_for ([@forum, @forum.topics.build])  do |f| %>
   <%= f.hidden_field :forum_id %>
   <%= f.hidden_field :name, :value=> current_user.username %>
+  <%= f.hidden_field :user_id, :value=> current_user.id %>
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_area :title %>
+    <%= f.label :post %><br />
+    <%= f.text_area(:title, :size => '60x3', :class => 'widgEditor') %>
   </div>  
   <div>
     <%= f.submit("Submit Post") %>

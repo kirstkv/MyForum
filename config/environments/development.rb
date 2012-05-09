@@ -37,4 +37,6 @@ Forumapp::Application.configure do
   config.assets.debug = true
   
   config.time_zone = 'London'
+  
+  Paperclip.options[:command_path]="/d/Program Files/ImageMagick-6.7.6-Q16"
 end

@@ -3,7 +3,7 @@ class ForumsController < ApplicationController
   # GET /forums
   # GET /forums.json
   def index
-    @forums = Forum.all
+      @forums = Forum.all
 
     respond_to do |format|
       format.html # index.html.erb
