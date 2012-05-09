@@ -36,6 +36,8 @@ Forumapp::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   
+  config.serve_static_assets = true
+  
   config.time_zone = 'London'
   
   Paperclip.options[:command_path]="/d/Program Files/ImageMagick-6.7.6-Q16"
