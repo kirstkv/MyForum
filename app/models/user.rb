@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
     address
   end
   
+  def gmaps4rails_infowindow
+    "<h5>#{self.username}</h5><br />#{self.address}<br />Joined #{self.created_at.strftime("%d/%m/%Y")}"
+  end
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
