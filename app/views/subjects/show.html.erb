@@ -1,6 +1,6 @@
 
 <h1><%= @subject.title %></h1>
-<strong><%= @subject.description %></strong>
+<strong><%= raw(@subject.description) %></strong>
     <%= form_tag subject_path, :method => 'get' do %>
     <p>
       <%= text_field_tag :search, params[:search] %>
@@ -20,6 +20,9 @@
   <% end %>
   </tr>
   <tr>
+  <%if @forums.count <1 %>
+    <td colspan=<% if current_user.admin? %>"4"<% else %>"3"<% end %>>No threads found</td>
+  <% end %>  
   <% (@forums.sort_by(&:updated_at).reverse).each do |forum| %>
     <% x=0 %>      
     <% x=x+forum.topics.count %>
@@ -75,7 +78,7 @@
     </div>
     <div class="field">
       <%= f.label :content %><br />
-      <%= f.text_area :content %>
+          <%= f.text_area(:content, :size => '60x3', :class => 'widgEditor', :html => "") %>
     </div>  
     <div>
       <%= f.submit("Create Thread") %>

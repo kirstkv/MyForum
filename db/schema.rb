@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509024459) do
+ActiveRecord::Schema.define(:version => 20120509200442) do
 
   create_table "forums", :force => true do |t|
     t.string   "name"
@@ -63,6 +63,10 @@ ActiveRecord::Schema.define(:version => 20120509024459) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "imageurl"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
+    t.boolean  "gmaps"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

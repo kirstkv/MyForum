@@ -8,7 +8,7 @@
   <tr>
     <td width="10%"><%= @forum.name %> profile</td>
     <td width= "90%"><strong>by <%= @forum.name %> at <%= @forum.created_at.in_time_zone(Time.zone).strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
-    <%= @forum.content %><br />
+    <%= raw(@forum.content) %><br />
     </td>   
   </tr>
   <tr><td colspan=2><strong>Replies</strong></td></tr>
@@ -16,9 +16,12 @@
   <% (@topics.sort_by(&:created_at)).each do |topic| %>
   <% x=x+1 %>
   <tr>
-    <td><%= topic.name %> profile</td>
+    <td><img src="<%=topic.user.imageurl if topic.user!=nil %>" alt="<%=topic.user.username if topic.user!=nil %>" width="100" /><br />
+    <%= topic.user.username if topic.user!=nil %><%= topic.name if topic.user.nil? %>'s profile<br />
+    <em><% if topic.user!=nil %><%=topic.user.topics.count+topic.user.forums.count%> posts<% end %></em> 
+    </td>
     <td><strong>by <%= topic.name %> at <%= topic.created_at.in_time_zone(Time.zone).strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
-    <%= topic.title %><br />
+    <%= raw(topic.title) %><br />
     <%= topic.updated_at.in_time_zone(Time.zone).strftime("Edited at %H:%M on %d/%m/%Y") if topic.created_at !=topic.updated_at%><br />
     <% if current_user!=nil %>
       <% if current_user.username==topic.name or current_user.admin? %>
@@ -46,7 +49,7 @@
   <%= f.hidden_field :user_id, :value=> current_user.id %>
   <div class="field">
     <%= f.label :post %><br />
-    <%= f.text_area(:title, :size => '60x3', :class => 'widgEditor' :html => "") %>
+    <%= f.text_area(:title, :size => '60x3', :class => 'widgEditor', :html => "") %>
   </div>  
   <div>
     <%= f.submit("Submit Post") %>

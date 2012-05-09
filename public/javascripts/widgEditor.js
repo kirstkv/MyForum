@@ -447,7 +447,7 @@ widgEditor.prototype.cleanSource = function()
 	}
 	
 	this.theInput.value = theHTML;
-	$(this.theExtraInput).remove();
+	
 	return true;
 }
 

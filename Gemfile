@@ -9,6 +9,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'json', '1.4.6'
 gem 'will_paginate', '3.0.3'
 gem 'paperclip'
+gem 'gmaps4rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

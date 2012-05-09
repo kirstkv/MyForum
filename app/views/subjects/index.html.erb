@@ -30,7 +30,7 @@
     <% end %>
     <em><%=x %> post<%="s" if x!=1 %></em>    
     </td>
-    <td><%= subject.description %></td>
+    <td><%= raw(subject.description) %></td>
     <td>
     <% if x!=0 %>
       by <%=name %>

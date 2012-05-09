@@ -27,8 +27,6 @@ require 'will_paginate/array'
     if params[:search]
       @forums = (@forums.find(:all, :conditions => ["content LIKE ?", "%#{params[:search]}%"]) + @forums.find(:all, :conditions => ["title LIKE ?", "%#{params[:search]}%"]) + @forums.find(:all, :conditions => ["name LIKE ?", "%#{params[:search]}%"]))
       @forums = @forums.uniq
-    else
-      @forums = Forum.all
     end
     @forums = @forums.to_a.paginate(:page => params[:page], :per_page =>10)
     @subject.forums.each do |f|

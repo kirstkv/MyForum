@@ -12,6 +12,7 @@ Forumapp::Application.routes.draw do
 
   resources :forums do
     resources :topics
+    resources :users
   end
   
   resources :users do

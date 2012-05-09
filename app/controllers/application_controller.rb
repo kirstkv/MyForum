@@ -13,6 +13,16 @@ class ApplicationController < ActionController::Base
   
   private
   
+  def make_admin
+    users=User.all
+    if users.count==1
+      users.each do |u|
+        u.admin="true"
+        u.save
+      end
+    end
+  end
+  
   def check_admin
     if current_user!=nil
       if current_user.admin!=true
