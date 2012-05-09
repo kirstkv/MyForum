@@ -15,7 +15,7 @@
     <% @users.each do |user| %>
     <tr>
       <td><img src="<%=user.imageurl %>" alt="<%=user.username %>" width="50" /></td>
-      <td><strong><%= user.username %></strong><br />Joined <%=user.created_at.strftime("%d/%m/%Y")%> 
+      <td><strong><%= link_to user.username, user %></strong><br />Joined <%=user.created_at.strftime("%d/%m/%Y")%> 
       </td>
       <td><%=user.topics.count+user.forums.count %></td>
       <td><%=user.time_zone %></td>

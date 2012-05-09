@@ -1,0 +1,21 @@
+<h1><p><%= @user.username %>'s Profile</p></h1>
+
+  <div><p><strong>Username: </strong><%=@user.username %><br /></p></div>
+  
+<% if current_user.admin? %>
+  <div><p><strong>Email: </strong><%=@user.email %><br /></p></div>
+<% end %>
+
+  <div><p><strong>Joined:</strong> <%=@user.created_at.strftime("%d/%m/%Y")%></p></div>
+  
+  <div><p><strong>Last sign in: </strong><%=@user.last_sign_in_at.strftime("%H:%M on %d/%m/%Y")%></p></div>
+  
+  <div><p><strong>Number of Posts: </strong><%=@user.topics.count+@user.forums.count %></p></div>
+
+  <div><p><strong>Time Zone: </strong><%=@user.time_zone %><br /></p></div>
+
+  <div><p><strong>Address: </strong><%= @user.address %><br /></p></div>
+
+  <div><p><strong>Uploaded Avatar: </strong>- not yet integrated, sorry!<br /><img src="<%=@user.avatar %>" width="200"/><br /></p></div>
+  
+  <div><p><strong>Web Avatar: </strong><br /><img src="<%=@user.imageurl %>" width="200"/><br /></p></div>
