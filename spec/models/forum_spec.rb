@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe Forum do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  it "can be instantiated" do
+    Forum.new.should be_an_instance_of(Forum)
+  end
+  it "can be saved successfully" do
+    Forum.create.should be_persisted
+  end
+  
 end

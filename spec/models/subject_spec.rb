@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Subject do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "can be instantiated" do
+    Subject.new.should be_an_instance_of(Subject)
+  end
+  it "can be saved successfully" do
+    Subject.create.should be_persisted
+  end
 end
