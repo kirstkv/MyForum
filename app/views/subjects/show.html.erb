@@ -31,7 +31,16 @@
     
     
       <td><%= link_to forum.title, forum_path(forum) %><br />
-      By <%= forum.name %> at <%= forum.created_at.in_time_zone(Time.zone).strftime(" at %H:%M on %d/%m/%Y")  %><br /></td>
+      By
+      <%stoppit=0 %>
+      <% @users.each do |u|%>
+          <% if u.username==forum.name and current_user!=nil %>
+            <%= link_to u.username, u %>
+            <% stoppit= 1 %>
+          <% end %>
+        <% end %>
+      <%= forum.name if stoppit==0 %>
+       at <%= forum.created_at.in_time_zone(Time.zone).strftime(" at %H:%M on %d/%m/%Y")  %><br /></td>
       
       <td><em><%=x %> post<%="s" if x!=1 %></em></td>
       
@@ -44,7 +53,16 @@
       <% end %>
 
       <% if x!=0 %>
-        by <%=name %>
+        by 
+      <%stoppit=0 %>
+        <% @users.each do |u|%>
+          <% if u.username==name and current_user!=nil %>
+            <%= link_to u.username, u %>
+            <% stoppit= 1 %>
+          <% end %>
+        <% end %>
+      <%= name if stoppit==0 %>
+      
         <%=y.strftime(" at %H:%M on %d/%m/%Y")  %>
       <% else %>
         <%="No posts here yet :-" %>&#040

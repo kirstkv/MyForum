@@ -12,7 +12,7 @@ require 'will_paginate/array'
   
   def index
     @subjects = Subject.paginate(:page => params[:page], :per_page =>10)
-
+    @users=User.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @subjects }
@@ -24,6 +24,7 @@ require 'will_paginate/array'
   def show
     @subject = Subject.find(params[:id])
     @forums = @subject.forums
+    @users=User.all
     if params[:search]
       @forums = (@forums.find(:all, :conditions => ["content LIKE ?", "%#{params[:search]}%"]) + @forums.find(:all, :conditions => ["title LIKE ?", "%#{params[:search]}%"]) + @forums.find(:all, :conditions => ["name LIKE ?", "%#{params[:search]}%"]))
       @forums = @forums.uniq

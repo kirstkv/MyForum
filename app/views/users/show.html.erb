@@ -2,6 +2,8 @@
 
   <div><p><strong>Username: </strong><%=@user.username %><br /></p></div>
   
+  <div><p><strong>Level: </strong><% if @user.admin? %>Admin<%else %>Peasant<%end %><br /></p></div>
+  
 <% if current_user.admin? %>
   <div><p><strong>Email: </strong><%=@user.email %><br /></p></div>
 <% end %>
@@ -19,3 +21,5 @@
   <div><p><strong>Uploaded Avatar: </strong>- not yet integrated, sorry!<br /><img src="<%=@user.avatar %>" width="200"/><br /></p></div>
   
   <div><p><strong>Web Avatar: </strong><br /><img src="<%=@user.imageurl %>" width="200"/><br /></p></div>
+  
+  <div><p><%= link_to 'Back', users_path %> <%= link_to 'Edit', edit_user_registration_path if @user==current_user %></p></div>

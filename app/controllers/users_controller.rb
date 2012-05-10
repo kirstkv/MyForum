@@ -25,6 +25,26 @@ class UsersController < ApplicationController
       format.json { render json: @user }
     end
   end
+  
+    def update
+    @user = User.find(params[:id])
 
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to(users_path, :notice => 'User was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  def make_admin
+    @user = User.find(params[:id])
+    @user.admin=true
+    @user.save
+    redirect_to(users_path, :notice => 'User was successfully updated.')
+  end
   
 end

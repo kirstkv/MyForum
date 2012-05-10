@@ -27,5 +27,5 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :username, :time_zone, :avatar, :imageurl, :latitude,
-                  :longitude, :address, :gmaps
+                  :longitude, :address, :gmaps, :admin
 end

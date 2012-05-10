@@ -7,7 +7,18 @@
   <% x=1 %>
   <tr>
     <td width="10%"><%= @forum.name %> profile</td>
-    <td width= "90%"><strong>by <%= @forum.name %> at <%= @forum.created_at.in_time_zone(Time.zone).strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
+    <td width= "90%">
+      <strong>by
+      <%stoppit=0 %>
+        <% @users.each do |u|%>
+          <% if u.username==@forum.name and current_user!=nil %>
+            <%= link_to u.username, u %>
+            <% stoppit= 1 %>
+          <% end %>
+        <% end %>
+      <%= @forum.name if stoppit==0 %>      
+      
+      at <%= @forum.created_at.in_time_zone(Time.zone).strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
     <%= raw(@forum.content) %><br />
     </td>   
   </tr>
@@ -17,10 +28,10 @@
   <% x=x+1 %>
   <tr>
     <td><img src="<%=topic.user.imageurl if topic.user!=nil %>" alt="<%=topic.user.username if topic.user!=nil %>" width="100" /><br />
-    <%= topic.user.username if topic.user!=nil %><%= topic.name if topic.user.nil? %>'s profile<br />
+    <% if topic.user!=nil %><%= link_to topic.user.username, topic.user %><%else%><%= topic.name %><% end %>'s profile<br />
     <em><% if topic.user!=nil %><%=topic.user.topics.count+topic.user.forums.count%> posts<% end %></em> 
     </td>
-    <td><strong>by <%= topic.name %> at <%= topic.created_at.in_time_zone(Time.zone).strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
+    <td><strong>by <% if topic.user!=nil %><%= link_to topic.user.username, topic.user %><%else%><%= topic.name %><% end %> at <%= topic.created_at.in_time_zone(Time.zone).strftime(" at %H:%M on %d/%m/%Y") %></strong><br />
     <%= raw(topic.title) %><br />
     <%= topic.updated_at.in_time_zone(Time.zone).strftime("Edited at %H:%M on %d/%m/%Y") if topic.created_at !=topic.updated_at%><br />
     <% if current_user!=nil %>

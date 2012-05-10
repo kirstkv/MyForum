@@ -27,6 +27,18 @@
         <td>
           <%unless user==current_user %>
             <%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %>
+            <% if user.admin? %>
+            <%= form_for user do |t| %>
+              <%= t.hidden_field :admin, :value=>"false" %>
+              <%= t.submit "Revoke Admin" %>
+            <% end %>
+            <% else %>
+             <%= form_for user do |t| %>
+              <%= t.hidden_field :admin, :value=>"true" %>
+              <%= t.submit "Make Admin" %>
+            <% end %>
+          <% end %>
+
           <% end %>
         </td>
       <% end %>
