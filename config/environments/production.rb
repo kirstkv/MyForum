@@ -13,8 +13,8 @@ Forumapp::Application.configure do
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
-  config.assets.precompile += %w( widgEditor.css gmap4rails.css  ) 
-
+  config.assets.precompile += %w( widgEditor.css g ) 
+  config.assets.precompile += %w( gmap4rails.css  ) 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
 
