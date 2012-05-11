@@ -1,0 +1,221 @@
+/* General Properties */
+
+h1 {font-size: 22px;}
+h2 {font-size: 20px;}
+h3 {font-size: 18px;}
+h4 {font-size: 16px;}
+h5 {font-size: 14px;}
+h6 {font-size: 12px;}
+
+h1, h2, h3, h4, h5, h6 {
+    color:#551a8b;
+    font-weight: normal;
+    line-height: normal;
+}
+
+body {
+    font-family: Verdana;
+    font-size: 12px;
+    background-color: black;
+    color: black;
+    line-height: 200%;
+    margin:0px;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+    white-space: nowrap;
+}
+
+li {
+    float:left;
+    list-style-type: none;
+    display: inline;
+    min-width: 0px;
+    margin-right: 80px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+/* Centres Logo */
+
+.centered {
+    position: absolute;
+    top: 50%;
+    margin-top: -21px;
+    margin-left: 10px;
+}
+/*Outer Containers */
+
+.container {
+    width:940px;
+    margin: 0 auto;
+
+}
+
+div.innerContainer {
+    position: relative;
+    float: left;
+    width:940px;
+    border-width: 0px;
+    border-left-width: 2px;
+    border-right-width: 2px;    
+    border-color: gray;
+    border-style: solid;
+    background-color: #fefefe;
+}
+
+/*End Outer Containers */
+/*Content*/
+
+div.abovecontentbar {
+    position: relative;
+    float: left;
+    width:940px;
+    background-color: #59ab36;
+    background-repeat: repeat-x;
+    height:8px;
+}
+
+div.content {
+    position: relative;
+    float: left;
+    width:940px;
+    min-height:500px;
+    background-image: url(content.jpg);
+    background-repeat: repeat-x;
+}
+
+div.contentinner {
+    margin: 10px; 
+}
+
+
+
+
+table {
+    padding:0px;
+    border-width: 0px;
+    width:80%;
+}
+
+tr {
+    vertical-align: top;
+    text-align: left; 
+}
+
+td {
+    border-width: 0px;
+    padding: 5px;
+}
+
+
+/*Footer*/
+
+div.prefooterbar {
+    position: relative;
+    float: left;
+    width:940px;
+    height:8px;
+    background-color: #59ab36;
+}
+div.prefooterspace {
+    position: relative;
+    float: left;
+    width:940px;
+    height:8px;
+}
+div.footer {
+    position: relative;
+    float: left;
+    width:940px;
+    background-image: url(footer.jpg);
+    background-repeat: repeat-x;
+    height:112px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 10px;
+    line-height:150%;
+}
+
+
+div.footer ul {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+div.footer li {
+    margin-left:20px;
+    margin-right: 20px;
+    float: none;
+    font-size: 12px;
+}
+
+/*End Footer*/
+/*Navigation*/
+
+div.navigation {
+    position: relative;
+    float: left;
+    width:940px;
+    height:42px;
+    background-image: url(navig.jpg);
+    background-repeat: repeat-x;
+}
+
+div.navigation ul {
+    height:42px;
+    line-height: 42px;
+}
+
+
+div.navigation a {
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/*End Navigation*/
+/* Header */
+
+
+div.aboveheadbar {
+    position: relative;
+    float: left;
+    width:940px;
+    background-color: #666565;
+    height:2px;
+}
+div.header {
+    position: relative;
+    float: left;
+    width:940px;
+    height:72px;
+    padding:5px;
+    background-image: url(header3.jpg);
+    background-repeat: repeat-x;
+}
+
+/*End Header*/
+
+
+
+/*GadgetFreaks Coloured font */
+
+#greyfont {
+    color:#878686;
+}
+
+#greenfont {
+    color: #008800;
+}
+
+.smallpic {
+    width:75px;
+}
+
+.bigpic {
+    width:200px;
+}
+

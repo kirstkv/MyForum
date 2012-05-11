@@ -1,0 +1,235 @@
+/* General Properties */
+
+h1 {font-size: 22px;}
+h2 {font-size: 20px;}
+h3 {font-size: 18px;}
+h4 {font-size: 16px;}
+h5 {font-size: 14px;}
+h6 {font-size: 12px;}
+
+h1, h2, h3, h4, h5, h6 {
+    color:#551a8b;
+    font-weight: normal;
+    line-height: normal;
+}
+
+body {
+    font-family: Verdana;
+    font-size: 12px;
+    background-color: black;
+    color: black;
+    line-height: 200%;
+    margin:0px;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+    white-space: nowrap;
+}
+
+li {
+    float:left;
+    list-style-type: none;
+    display: inline;
+    min-width: 0px;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+/* Centres Logo */
+
+.centered {
+    position: absolute;
+    top: 50%;
+    margin-top: -21px;
+    margin-left: 10px;
+}
+/*Outer Containers */
+
+.container {
+    width:940px;
+    margin: 0 auto;
+
+}
+
+div.innerContainer {
+    position: relative;
+    float: left;
+    width:940px;
+    border-width: 0px;
+    border-left-width: 2px;
+    border-right-width: 2px;    
+    border-color: gray;
+    border-style: solid;
+    background-color: #fefefe;
+}
+
+/*End Outer Containers */
+/*Content*/
+
+div.abovecontentbar {
+    position: relative;
+    float: left;
+    width:940px;
+    background-color: #59ab36;
+    background-repeat: repeat-x;
+    height:8px;
+}
+
+div.content {
+    position: relative;
+    float: left;
+    width:940px;
+    min-height:500px;
+    background_colour: #fefefe;
+    background-image: url(content.jpg);
+    background-repeat: repeat-x;
+}
+
+div.contentinner {
+    margin: 10px; 
+}
+
+
+
+
+table {
+    padding:0px;
+    border-width: 0px;
+
+    width:100%;
+
+}
+
+tr {
+    vertical-align: top;
+    text-align: left;
+    border-width: 1px;
+    padding: 5px;
+    border-color: blue;
+    border-radius:5px; 
+}
+
+
+td, th {
+    border-width: 1px;
+    padding: 5px;
+    border-color: blue;
+    border-radius:5px;
+}
+
+
+/*Footer*/
+
+div.prefooterbar {
+    position: relative;
+    float: left;
+    width:940px;
+    height:8px;
+    background-color: #59ab36;
+    border-width:2px;
+    border-color: gray;
+    border-top-width:0px;
+    border-bottom-width:0px;
+    border-style:solid;
+}
+
+div.footer {
+    position: relative;
+    float: left;
+    width:940px;
+    background-color: #fefefe;
+    background-image: url(footer.jpg);
+    background-repeat: repeat-x;
+    height:112px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 10px;
+    line-height:150%;
+    border-width:2px;
+    border-color: gray;
+    border-top-width:0px;
+    border-style:solid;
+}
+
+
+div.footer ul {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+div.footer li {
+    margin-left:20px;
+    margin-right: 20px;
+    float: none;
+    font-size: 12px;
+}
+
+/*End Footer*/
+/*Navigation*/
+
+div.navigation {
+    position: relative;
+    float: left;
+    width:940px;
+    height:42px;
+    background-image: url(navig.jpg);
+    background-repeat: repeat-x;
+}
+
+div.navigation ul {
+    height:42px;
+    line-height: 42px;
+}
+
+
+div.navigation a {
+    font-size: 16px;
+    text-decoration: none;
+}
+
+/*End Navigation*/
+/* Header */
+
+
+div.aboveheadbar {
+    position: relative;
+    float: left;
+    width:940px;
+    background-color: #666565;
+    height:2px;
+}
+div.header {
+    position: relative;
+    float: left;
+    width:940px;
+    height:60px;
+    padding:5px;
+    background-image: url(header3.jpg);
+    background-repeat: repeat-x;
+    
+}
+
+div.header p {
+    font-size:16px
+}
+/*End Header*/
+
+
+
+.smallpic {
+    width:75px;
+}
+
+.bigpic {
+    width:200px;
+}
+
+#myforum {
+    display:inline;
+    color:#551a8b;
+    font-size:45px;
+}
