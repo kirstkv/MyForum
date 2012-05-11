@@ -16,7 +16,7 @@
     <tr>
       <td><img src="<%
       if user!=nil %>
-        <% if user.avatar.url!=nil %>
+        <% if user.avatar_file_name!=nil %>
           <%= user.avatar.url(:thumb) %>
         <% else %>
           <%= user.imageurl %>

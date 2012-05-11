@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :set_timezone
-  before_filter :restore_admin
+  
   def set_timezone
     if current_user!=nil
       Time.zone=current_user.time_zone
@@ -16,14 +16,12 @@ class ApplicationController < ActionController::Base
   
   private
   
-  def restore_admin
+  def make_admin
     users=User.all
     if users.count==1
-      if current_user.admin!=true
-        users.each do |u|
-          u.admin="true"
-          u.save
-        end
+      users.each do |u|
+        u.admin="true"
+        u.save
       end
     end
   end
