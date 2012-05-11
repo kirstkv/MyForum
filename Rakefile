@@ -8,10 +8,10 @@ require 'rake'
 
 
 # RSpec 2.0
-RSpec::Core::RakeTask.new(:core) do |spec|
-  spec.pattern = 'spec/erector/*_spec.rb'
-  spec.rspec_opts = ['--backtrace']
-end
+#RSpec::Core::RakeTask.new(:core) do |spec|
+  #spec.pattern = 'spec/erector/*_spec.rb'
+  #spec.rspec_opts = ['--backtrace']
+#end
 
 
 
