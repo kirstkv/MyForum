@@ -1,6 +1,6 @@
 Forumapp::Application.routes.draw do
   
-  root :to => 'home#index'  
+  root :to => 'subjects#index'  
 
   devise_for :users do
     get '/users/sign_out' => 'devise/sessions#destroy'
@@ -24,6 +24,10 @@ Forumapp::Application.routes.draw do
   
 
   match '/users/:id', :to => 'users#destroy', :as => :destroy_user, :via => :delete
+  
+
+  match '*a', :to => 'application#routing'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

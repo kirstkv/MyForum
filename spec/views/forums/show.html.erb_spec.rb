@@ -15,5 +15,6 @@ describe "forums/show" do
     rendered.should match(/Name/)
     rendered.should match(/Title/)
     rendered.should match(/MyText/)
+    
   end
 end

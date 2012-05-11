@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
     before_filter :authenticate_user!, :except => [:show, :index]
+
     def create
       @forum = Forum.find(params[:forum_id])
       @topic = @forum.topics.create(params[:topic])

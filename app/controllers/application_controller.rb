@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :set_timezone
   
- 
   def set_timezone
     if current_user!=nil
       Time.zone=current_user.time_zone
@@ -9,6 +8,10 @@ class ApplicationController < ActionController::Base
       Time.zone='London'
     end
     
+  end
+  
+  def routing
+    redirect_to( root_url, :notice => "Page not found")
   end
   
   private
@@ -31,7 +34,5 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def routing
-    redirect_to( root_url, :notice => "Page not found")
-  end
+
 end

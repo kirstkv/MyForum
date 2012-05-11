@@ -6,7 +6,17 @@
 <table cellpadding="10px" border="1" width="100%">
   <% x=1 %>
   <tr>
-    <td width="10%"><%= @forum.name %> profile</td>
+    <td width="10%"><img src="<%
+      if @forum.user!=nil %>
+        <% if @forum.user.avatar.url !=nil %>
+          <%=@forum.user.avatar.url(:thumb) %>
+        <% else %>
+          <%=@forum.user.imageurl %>
+        <% end %>
+      <% end %>" alt="<%=@forum.user.username if @forum.user!=nil %>" width="100" /><br />
+    <% if @forum.user!=nil %><%= link_to @forum.user.username, @forum.user %><%else%><%= @forum.name %><% end %>'s profile<br />
+    <em><% if @forum.user!=nil %><%=@forum.user.topics.count+@forum.user.forums.count%> posts<% end %></em>
+    </td>
     <td width= "90%">
       <strong>by
       <%stoppit=0 %>
@@ -27,7 +37,14 @@
   <% (@topics.sort_by(&:created_at)).each do |topic| %>
   <% x=x+1 %>
   <tr>
-    <td><img src="<%=topic.user.imageurl if topic.user!=nil %>" alt="<%=topic.user.username if topic.user!=nil %>" width="100" /><br />
+    <td><img src="<%
+      if topic.user!=nil %>
+        <% if topic.user.avatar.url !=nil %>
+          <%=topic.user.avatar.url(:thumb) %>
+        <% else %>
+          <%=topic.user.imageurl %>
+        <% end %>
+      <% end %>" alt="<%=topic.user.username if topic.user!=nil %>" width="100" /><br />
     <% if topic.user!=nil %><%= link_to topic.user.username, topic.user %><%else%><%= topic.name %><% end %>'s profile<br />
     <em><% if topic.user!=nil %><%=topic.user.topics.count+topic.user.forums.count%> posts<% end %></em> 
     </td>

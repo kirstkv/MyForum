@@ -1,5 +1,7 @@
 class SubjectsController < ApplicationController
 require 'will_paginate/array'
+
+before_filter :check_admin, :except => [:show, :index]
   
   before_filter :authenticate_user!, :except => [:show, :index]
   # GET /subjects
@@ -51,8 +53,7 @@ require 'will_paginate/array'
     end
   end
 
-  # GET /subjects/new
-  # GET /subjects/new.json
+
   def new
     @subject = Subject.new
 

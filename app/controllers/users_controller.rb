@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-
+before_filter :check_admin, :except => [:show, :index]
   def index
     usei=User.all.sort_by(&:created_at)
     @users = usei.paginate(:page => params[:page], :per_page =>10)
