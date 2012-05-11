@@ -1,6 +1,6 @@
 Forumapp::Application.routes.draw do
   
-  root :to => 'subjects#index'  
+  root :to => 'home#index'  
 
   devise_for :users do
     get '/users/sign_out' => 'devise/sessions#destroy'

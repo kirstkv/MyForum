@@ -5,7 +5,7 @@ describe "subjects/show" do
     @subject = assign(:subject, stub_model(Subject,
       :title => "Title",
       :description => "MyText",
-      :forum => nil
+      :id => 1
     ))
   end
 
