@@ -1,13 +1,4 @@
-body {
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px; }
-
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
   line-height: 18px; }
 
 pre {
@@ -16,11 +7,7 @@ pre {
   font-size: 11px; }
 
 a {
-  color: #000;
-  &:visited {
-    color: #666; }
   &:hover {
-    color: #fff;
     background-color: #000; } }
 
 div {
@@ -53,12 +40,15 @@ div {
     color: #fff; }
   ul li {
     font-size: 12px;
-    list-style: square; } }
+    list-style: square; } 
     
-  .jsappear {
-    display:none;
+  
 }
 
+.jsappear {
+    display:none;
+    }
+    
 textarea {
 width:70%;
 min-width:500px;
@@ -68,6 +58,8 @@ height:200px;
 input[type=text], input[type=password], input[type=email]{
 width:50%;
 }
+
+
 /* TOOLBAR BUTTONS */
 
 .widgToolbar a

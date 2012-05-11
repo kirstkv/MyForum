@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p><%= link_to 'Forums', subjects_path %> > <%= link_to @forum.subject.title, subject_path(@forum.subject) %> > <%=@forum.title %></p>
 
 <h2><%= @forum.title %></h2>
 

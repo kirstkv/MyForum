@@ -9,7 +9,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'json', '1.4.6'
 gem 'will_paginate', '3.0.3'
 gem 'paperclip'
-gem 'gmaps4rails'
+gem 'gmaps4rails', '1.5.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
@@ -29,6 +29,7 @@ gem 'jquery-rails', '2.0.0'
 group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'rspec-rails', '2.9.0'
   gem 'email_spec'
   gem "mocha"
   gem 'capybara', '1.1.2'

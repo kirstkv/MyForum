@@ -1,14 +1,16 @@
+<p><%= link_to 'Forums', subjects_path %> > <%=@subject.title %></p>
 
 <h1><%= @subject.title %></h1>
 <strong><%= raw(@subject.description) %></strong>
-    <%= form_tag subject_path, :method => 'get' do %>
+  <%= form_tag subject_path, :method => 'get' do %>
     <p>
       <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil %>
-    </p>
-    <% end %>
-<h2>Threads</h2>
-<table cellpadding="10px" border="1" width="100%">
+      <%= submit_tag ("Search "+@subject.title.to_s), :name => nil %>
+      </p>
+  <% end %>
+
+<li><h2>Threads</h2></li></ul>
+<table border="1">
   <tr>
   <th>Thread</th>
   <th>Replies</th>
@@ -21,7 +23,7 @@
   </tr>
   <tr>
   <%if @forums.count <1 %>
-    <td colspan=<% if current_user.admin? %>"4"<% else %>"3"<% end %>>No threads found</td>
+    <td colspan=<%if current_user!=nil%><% if current_user.admin? %>"4"<% else %>"3"<% end %><% end %>No threads found</td>
   <% end %>  
   <% (@forums.sort_by(&:updated_at).reverse).each do |forum| %>
     <% x=0 %>      
@@ -40,7 +42,8 @@
           <% end %>
         <% end %>
       <%= forum.name if stoppit==0 %>
-       at <%= forum.created_at.in_time_zone(Time.zone).strftime(" at %H:%M on %d/%m/%Y")  %><br /></td>
+       at <%= forum.created_at.in_time_zone(Time.zone).strftime(" at %H:%M on %d/%m/%Y")  %>
+       <br /></td>
       
       <td><em><%=x %> post<%="s" if x!=1 %></em></td>
       

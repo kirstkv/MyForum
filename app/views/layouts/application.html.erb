@@ -1,43 +1,96 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
-<head>
-  <title>Forumapp</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= stylesheet_link_tag 'widgEditor' %>
-  <%= stylesheet_link_tag 'gmaps4rails' %>
-  <script src="http://code.jquery.com/jquery-latest.js"></script>
-  <%= csrf_meta_tags %>
-</head>
-<body style="background: #EEEEEE;">
-  <div id="user_nav">
+    <head>
 
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.username %>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path %>
-    <%= link_to "My Account", edit_user_registration_path %>
-    <%= link_to "Users", users_path %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or
-    <%= link_to "Sign in", new_user_session_path %>
-  <% end %>
-</div>
+        <title>MyForum</title>
+        <%= stylesheet_link_tag    "application", :media => "all" %>
+        <%= javascript_include_tag "application" %>
+        <%= stylesheet_link_tag 'widgEditor' %>
+        <%= stylesheet_link_tag 'gmaps4rails' %>
+        <%= stylesheet_link_tag 'app' %>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <%= csrf_meta_tags %>
+
+    </head>
+ 
+    <body>
+       
+        
+        <div class="container">
+            <div class="innerContainer">
+                
+                <div class="aboveheadbar"></div>
+                <div class="aboverheadspace"></div>
+                <div class="header">
+                  <br /><ul>
+                    <li><p id="myforum">Welcome to MyForum!</p></li>
+                    <li>
+                      <div>
+                        <div style="float:right; width:90px; display:inline;"><a href="http://twitter.com/share"class="twitter-share-button" dataurl="www.abdn.ac.uk/~t01kas11/FMyForum/" data-text="GadgetFreaks" data-count="horizontal" datavia="TwitterAccount">Tweet</a>
+                          <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+                        </div>
+                        <div style="float:right; width:60px;"><iframe src="http://www.facebook.com/plugins/like.php?href=www.abdn.ac.uk/~t01kas11/FMyForum/&amp;layout=button_count&amp;show_faces=false&amp;width=50&amp;action=like&amp;colorscheme=light&amp;show_faces=false&amp;height=35" font=verdana&amp;height=21" scrolling="no" frameborder="0" style="border:none;overflow:hidden; width:50px; height:35px;" allowTransparency="true"></iframe></div>
+                        </div>
+                    </li>
+                </div>
+                
+                
+                <div class="navigation" id="usernav">
+                    <ul>
+                            <li><%= link_to "Forums", subjects_path %>
+                        <% if user_signed_in? %>
+
+                            <li><%= link_to "My Account", current_user %></li>
+                            <li><%= link_to "Users", users_path %></li>
+                            <li><%= link_to "Sign out", destroy_user_session_path %></li>
+                            <li> Signed in as <%= current_user.username %></li>
+                            
+                        <% else %>
+                            <li><%= link_to "Sign up", new_user_registration_path %> or</li>
+                            <li><%= link_to "Sign in", new_user_session_path %></li>
+                        <% end %>
+                    </ul>
+                </div>
+                
+                <div class="abovebannerbar"></div>
+                <div class="abovecontentbar"></div>
+                <div class="nav2">
+                  <ul>
+                    <li><%= link_to 'Back', :back %></li>
+
+                  </ul>
+                  
+                </div>
+                <div class="abovecontentbar"></div>                
+                <div class="content">
+                
+                    <div class="contentinner">
+
+                        <p id="notice"><%= notice %></p>
+                        <p class="alert"><%= alert %></p>
 
 
-  
-  <p id="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-
-  <%= yield %>
+                        <%= yield %>
     
-  <%=yield :scripts %>
+                        <%=yield :scripts %>
   
-<script>
-  $(".displayform").click(function () {
-    $(".jsappear").slideToggle("slow");
-  });
-</script>
-
-</body>
+                        <script>
+                             $(".displayform").click(function () {
+                                $(".jsappear").slideToggle("slow");
+                            });
+                        </script>
+                        
+                    </div>
+                </div>
+                
+                <div class="prefooterbar"></div>          
+                <div class="footer">
+                    <ul>
+                        <li><%= link_to "Forums", subjects_path %></li>   
+                    </ul>
+                    <p>Copyright &copy; 2012 MyForum by Kirsten Smith. All Rights Reserved. Designated trademarks and brands are the property of their respective owners. </p>
+                </div>                    
+            </div>
+        </div>
+    </body>
 </html>

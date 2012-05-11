@@ -26,8 +26,13 @@ require 'will_paginate/array'
     @forums = @subject.forums
     @users=User.all
     if params[:search]
-      @forums = (@forums.find(:all, :conditions => ["content LIKE ?", "%#{params[:search]}%"]) + @forums.find(:all, :conditions => ["title LIKE ?", "%#{params[:search]}%"]) + @forums.find(:all, :conditions => ["name LIKE ?", "%#{params[:search]}%"]))
+
+      a= @forums.find(:all, :joins => :topics, :conditions => ['content LIKE ? OR topics.title LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%"])
+      b= @forums.find(:all, :conditions => ["title LIKE ?", "%#{params[:search]}%"])
+      c= @forums.find(:all, :conditions => ["name LIKE ?", "%#{params[:search]}%"])
+      @forums=a+b+c
       @forums = @forums.uniq
+      
     end
     @forums = @forums.to_a.paginate(:page => params[:page], :per_page =>10)
     @subject.forums.each do |f|

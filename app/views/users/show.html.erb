@@ -22,4 +22,4 @@
   
   <div><p><strong>Web Avatar: </strong><br /><img src="<%=@user.imageurl %>" width="200"/><br /></p></div>
   
-  <div><p><%= link_to 'Back', users_path %> <%= link_to 'Edit', edit_user_registration_path if @user==current_user %></p></div>
+  <div><p><%= link_to 'All Users', users_path %> <%= link_to 'Edit User', edit_user_registration_path if @user==current_user %></p></div>
