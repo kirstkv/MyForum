@@ -3,7 +3,7 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require 'rake'
-require "rspec/core/rake_task" # RSpec 2.0
+#require "rspec/core/rake_task" # RSpec 2.0
 
 
 
